@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 
 import { handleInitialData } from '../actions/shared'
+import {setAuthedUser} from '../actions/authedUser'
 import { connect } from 'react-redux'
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
@@ -13,6 +14,8 @@ class App extends Component {
 
   componentDidMount() {
     this.props.dispatch(handleInitialData())
+    this.props.dispatch(setAuthedUser('Gus'))
+
   }
 
   render(){
@@ -45,7 +48,7 @@ class App extends Component {
 function mapStateToProps ({ authedUser, users }) {
   return {
     loading: authedUser === null,
-    authedUser: null,
+    // authedUser: authedUser,
     users: users
   }
 }

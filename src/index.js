@@ -4,12 +4,9 @@ import './index.css';
 import App from './components/App';
 
 // parts for the store
-import { createStore } from 'redux'
+import { store } from './store'
 import { Provider } from 'react-redux'
-import reducer from './reducers'
-import middleware from './middleware'
 
-const store = createStore(reducer, middleware)
 
 ReactDOM.render(
   <Provider store={store}>

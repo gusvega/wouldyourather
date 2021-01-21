@@ -1,29 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
-import Button from '@material-ui/core/Button';
+import { store } from '../../../store'
 import {setAuthedUser} from '../../../actions/authedUser'
 
-
-
-
 class LoginPage extends React.Component {
+    
+    user_id = ''
 
-    handleSubmit(event) {
-        console.log('Select User: ' + event.target.value);
-        event.preventDefault();
-        // this.props.history.push(`/home`);
-        // this.props.dispatch(setAuthedUser(event.target.value))
 
-    }
-
-    handleSelectChange(event) {
-        console.log(event.target.value);
+    handleSelectChange(user_id) {
+        console.log(this.user_id);
+        store.dispatch(setAuthedUser(user_id))
     }
 
     render() {
         const { users } = this.props
-
         return (
             <div>
                 Login Page
@@ -33,13 +24,17 @@ class LoginPage extends React.Component {
                             Select User: 
                         </label>
                         <div>
-                            <select onChange={this.handleSelectChange}>
+                            <select defaultValue='none' onChange={(event) => {
+                                this.user_id = event.target.value
+                                this.handleSelectChange(this.user_id)
+
+                            }}>
+                                <option key='none' value='none' disabled>None</option>
                                 {Object.keys(users).map((user) => (
                                     <option key={user} value={user}>{user}</option>
                                 ))}
                             </select>
                         </div>
-                        <Button variant="contained" color="primary" onClick={this.handleSubmit}>Submit</Button>
                     </form>
                 </div>
             </div>
