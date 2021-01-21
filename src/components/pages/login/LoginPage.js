@@ -11,6 +11,8 @@ class LoginPage extends React.Component {
     handleSelectChange(user_id) {
         console.log(this.user_id);
         store.dispatch(setAuthedUser(user_id))
+        this.props.history.push(`/home`);
+
     }
 
     render() {

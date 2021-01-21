@@ -14,8 +14,6 @@ class App extends Component {
 
   componentDidMount() {
     this.props.dispatch(handleInitialData())
-    this.props.dispatch(setAuthedUser('Gus'))
-
   }
 
   render(){
@@ -48,7 +46,6 @@ class App extends Component {
 function mapStateToProps ({ authedUser, users }) {
   return {
     loading: authedUser === null,
-    // authedUser: authedUser,
     users: users
   }
 }
