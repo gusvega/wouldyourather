@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { store } from '../../../store'
 import {setAuthedUser} from '../../../actions/authedUser'
+import './Login.css'
 
 class LoginPage extends React.Component {
     
@@ -12,13 +13,13 @@ class LoginPage extends React.Component {
         console.log(this.user_id);
         store.dispatch(setAuthedUser(user_id))
         this.props.history.push(`/home`);
-
     }
 
     render() {
         const { users } = this.props
+
         return (
-            <div>
+            <div className='LoginPage'>
                 Login Page
                 <div>
                     <form>

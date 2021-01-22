@@ -1,0 +1,19 @@
+.Nav {
+    font: 16px/1.5em "Overpass", "Open Sans", Helvetica, sans-serif;
+    color: #333;
+    font-weight: 300;
+    padding: 30px;
+}
+
+.userInfo,
+.signOutButton {
+    float: right;
+    color: #333;
+    text-decoration: none;
+}
+
+.link {
+    margin-right: 15px;
+    text-decoration: none;
+    color: black;
+}
