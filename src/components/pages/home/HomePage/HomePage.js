@@ -22,7 +22,6 @@ class HomePage extends React.Component {
             <div>
                 <Nav/>
                 <div className='HomePage'>
-                    HOME PAGE
                     <QuestionsContainer/>
                 </div>
 

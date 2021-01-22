@@ -1,14 +1,46 @@
 import React from 'react'
 import './QuestionCard.css'
+import { Skeleton, Card, Avatar } from 'antd';
+import {EyeOutlined } from '@ant-design/icons';
+import { connect } from 'react-redux'
 
-class QuestionCard extends React.Component{
-    render(){
+
+const { Meta } = Card;
+
+class QuestionCard extends React.Component {
+
+    render() {
+        const { loading } = this.props;
+
         return (
-            <div className='QuestionCard'>
-                <p>QUESTION CARD</p>
-            </div>
-        )
+            <>
+                <Card
+                    style={{ width: 450, marginTop: 16 }}
+                    actions={[
+                        <EyeOutlined key='view_question'/>
+                    ]}
+                >
+                    <Skeleton loading={loading} avatar active>
+                        <Meta
+                            avatar={
+                                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                            }
+                            title="Card title"
+                            description="This is the description"
+                        />
+                    </Skeleton>
+                </Card>
+            </>
+        );
     }
 }
 
-export default QuestionCard
+function mapStateToProps({ authedUser, users }) {
+    return {
+        loading: authedUser === null,
+        authedUser: authedUser,
+        users: users
+    }
+}
+
+export default connect(mapStateToProps)(QuestionCard)

@@ -37,8 +37,6 @@ class App extends Component {
                   <Route path='/answeredquestion' exact component={AnsweredQuestionPage} />
                   <Route path='/unansweredquestion' exact component={UnansweredQuestionPage} />
 
-                  
-
                   <Route exact path="/">
                     {this.props.authedUser ? <Redirect to="/home" /> : <Redirect to="/login" />}
                   </Route>
@@ -53,10 +51,11 @@ class App extends Component {
   
 }
 
-function mapStateToProps ({ authedUser, users }) {
+function mapStateToProps ({ authedUser, users, questions }) {
   return {
     loading: authedUser === null,
-    users: users
+    users: users,
+    questions: questions,
   }
 }
 
