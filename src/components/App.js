@@ -9,8 +9,8 @@ import LoginPage from './pages/login/LoginPage'
 import HomePage from './pages/home/HomePage/HomePage'
 import NewQuestionPage from './pages/newQuestion/NewQuestionPage/NewQuestionPage'
 import Leaderboard from './pages/leaderboard/LeaderboardPAge/LeaderboardPage'
-import AnsweredQuestionPage from './pages/answeredQuestion/AnsweredQuestionPage'
-import UnansweredQuestionPage from './pages/unansweredQuestion/UnansweredQuestionPage'
+import AnsweredQuestionPage from './pages/answeredQuestion/AnsweredQuestionPage/AnsweredQuestionPage'
+import UnansweredQuestionPage from './pages/unansweredQuestion/UnansweredQuestionPage/UnansweredQuestionPage'
 
 
 class App extends Component {
