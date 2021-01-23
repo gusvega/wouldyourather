@@ -1,19 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
 import Nav from '../../../Nav/Nav'
 import NewQuestionCard from '../NewQuestionCard/NewQuestionCard';
 import './NewQuestionPage.css'
 
-class NewQuestion extends React.Component{
+function NewQuestion ({authedUser, history}){
 
-    componentDidMount() {
-        if (this.props.authedUser === '') {
-            this.props.history.push(`/`);
+        if (authedUser === '') {
+            history.push(`/`);
         }
-    }
 
-    render(){
         return (
             <div>
                 <Nav/>
@@ -24,13 +20,11 @@ class NewQuestion extends React.Component{
             </div>
         )
     }
-}
 
 function mapStateToProps({ authedUser, users }) {
     return {
         loading: authedUser === null,
         authedUser: authedUser,
-        users: users
     }
 }
 

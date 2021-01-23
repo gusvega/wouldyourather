@@ -6,7 +6,6 @@ class UsersContainer extends React.Component{
     render(){
         return (
             <div className='UsersContainer'>
-                <p>USERS CONTAINER</p>
                 <User/>
             </div>
         )

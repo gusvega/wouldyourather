@@ -22,7 +22,7 @@ class QuestionsContainer extends React.Component{
 
         return(
             <div className='QuestionsContainer'>
-                <Tabs defaultActiveKey="1" centered>
+                <Tabs defaultActiveKey="2" centered>
                     <TabPane tab="Answered Questions" key="1" onTabClick={() => console.log('TAB SELECTED')}>
                         {users[authedUser]['answeredQuestions'].map((questionID) => (
                                 <div key={questionID}>

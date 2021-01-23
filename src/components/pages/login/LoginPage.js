@@ -4,6 +4,9 @@ import { store } from '../../../store'
 import {setAuthedUser} from '../../../actions/authedUser'
 import './Login.css'
 
+import {Card } from 'antd';
+
+
 class LoginPage extends React.Component {
     
     user_id = ''
@@ -21,7 +24,11 @@ class LoginPage extends React.Component {
             <div className='LoginPage'>
                 Login Page
                 <div>
-                    <form>
+                <Card
+                style={{ width: 450, marginTop: 16 }}
+                hoverable='true'
+            >
+                <form>
                         <label>
                             Select User: 
                         </label>
@@ -38,13 +45,17 @@ class LoginPage extends React.Component {
                             </select>
                         </div>
                     </form>
+
+            </Card>
+
+                    
                 </div>
             </div>
         )
     }
 }
 
-function mapStateToProps({ authedUser, users }) {
+function mapStateToProps({ authedUser, users, loading }) {
     // console.log(authedUser, users)
     return {
         loading: authedUser === null,

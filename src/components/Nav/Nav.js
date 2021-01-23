@@ -14,6 +14,12 @@ function onClickHandler(){
 }
 
 function Nav ({authedUser, users, history}) {
+    console.log('AuthedUser', authedUser)
+    // console.log('Name', users[authedUser]['name'])
+
+    if(!authedUser){
+        history.push('/')
+    }
     
     if(!users[authedUser]['name']){
         history.push('/')

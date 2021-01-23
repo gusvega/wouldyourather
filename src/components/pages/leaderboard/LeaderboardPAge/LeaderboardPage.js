@@ -5,33 +5,22 @@ import './LeaderboardPage.css'
 import UsersContainer from '../UsersContainer/UsersContainer';
 
 
-class Leaderboard extends React.Component {
+function Leaderboard ({authedUser}) {
 
-    componentDidMount() {
-        if (this.props.authedUser === '') {
-            this.props.history.push(`/`);
-        }
-    }
-
-    render() {
         return (
             <div>
                 <Nav />
                 <div className='LeaderboardPage'>
-
-                    <p>LEADER BOARD</p>
                     <UsersContainer/>
                 </div>
             </div>
         )
-    }
 }
 
-function mapStateToProps({ authedUser, users }) {
+function mapStateToProps({ authedUser }) {
     return {
         loading: authedUser === null,
         authedUser: authedUser,
-        users: users
     }
 }
 
