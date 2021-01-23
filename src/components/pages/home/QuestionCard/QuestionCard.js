@@ -35,11 +35,12 @@ class QuestionCard extends React.Component {
     }
 }
 
-function mapStateToProps({ authedUser, users }) {
+function mapStateToProps({ authedUser, users, questions }) {
     return {
         loading: authedUser === null,
         authedUser: authedUser,
-        users: users
+        users: users, 
+        questions: questions
     }
 }
 
