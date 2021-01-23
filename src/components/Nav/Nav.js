@@ -11,14 +11,13 @@ import './Nav.css'
 class Nav extends React.Component {
     
 
-
     onClickHandler(){
         this.props.dispatch(setAuthedUser(''))
     }
 
     render(){
 
-    const {authedUser} = this.props
+    const {authedUser, users} = this.props
 
     return (
         <nav className='Nav'>
@@ -27,7 +26,7 @@ class Nav extends React.Component {
                 <NavLink className='link' to='/newquestion' activeClassName='active'>New Question</NavLink>
 
                 <NavLink className='link' to='/leaderboard' activeClassName='active'>Leader Board</NavLink>
-                <div className='userInfo'>Hello, <strong>{authedUser}</strong></div>
+                <div className='userInfo'>Hello, <strong>{users[authedUser]['name']}</strong></div>
                 <br></br>
                 <NavLink className='signOutButton' to="/login" onClick={this.onClickHandler}>Sign out</NavLink>  
             </div>
