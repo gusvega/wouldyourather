@@ -1,23 +1,23 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-// import { store } from '../../store'
+import { store } from '../../store'
 import {setAuthedUser} from '../../actions/authedUser'
+import { withRouter } from "react-router-dom";
+
 
 import './Nav.css'
 
 
+function onClickHandler(){
+    store.dispatch(setAuthedUser(''))
+}
 
-class Nav extends React.Component {
+function Nav ({authedUser, users, history}) {
     
-
-    onClickHandler(){
-        this.props.dispatch(setAuthedUser(''))
+    if(!users[authedUser]['name']){
+        history.push('/')
     }
-
-    render(){
-
-    const {authedUser, users} = this.props
 
     return (
         <nav className='Nav'>
@@ -28,19 +28,19 @@ class Nav extends React.Component {
                 <NavLink className='link' to='/leaderboard' activeClassName='active'>Leader Board</NavLink>
                 <div className='userInfo'>Hello, <strong>{users[authedUser]['name']}</strong></div>
                 <br></br>
-                <NavLink className='signOutButton' to="/login" onClick={this.onClickHandler}>Sign out</NavLink>  
+                <NavLink className='signOutButton' to="/login" onClick={onClickHandler}>Sign out</NavLink>  
+
             </div>
         </nav>
-    )}
+    )
 }
 
-function mapStateToProps({ authedUser, users, dispatch }) {
+function mapStateToProps({ authedUser, users }) {
     return {
         loading: authedUser === null,
         authedUser: authedUser,
         users: users,
-        dispatch
     }
 }
 
-export default connect(mapStateToProps)(Nav)
+export default withRouter(connect(mapStateToProps)(Nav))

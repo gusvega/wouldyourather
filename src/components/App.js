@@ -35,7 +35,7 @@ class App extends Component {
                   <Route path='/newquestion' exact component={NewQuestionPage} />
                   <Route path='/leaderboard' exact component={Leaderboard} />
                   <Route path='/answeredquestion/:id' exact component={AnsweredQuestionPage} />
-                  <Route path='/unansweredquestion' exact component={UnansweredQuestionPage} />
+                  <Route path='/unansweredquestion/:id' exact component={UnansweredQuestionPage} />
 
                   <Route exact path="/">
                     {this.props.authedUser ? <Redirect to="/home" /> : <Redirect to="/login" />}

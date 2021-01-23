@@ -9,7 +9,6 @@ class UnansweredQuestionPage extends React.Component{
             <div>
                 <Nav/>
                 <div className='UnansweredQuestionPage'>
-                    <p>UNANSWERED QUESTION PAGE</p>
                     <UnansweredQuestion/>
                 </div>
             </div>

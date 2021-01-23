@@ -9,7 +9,6 @@ class AnsweredQuestionPage extends React.Component{
             <div>
                 <Nav/>
                 <div className='AnsweredQuestionPage'>
-                    <p>ANSWERED QUESTION PAGE</p>
                     <AnsweredQuestion/>
                 </div>
             </div>

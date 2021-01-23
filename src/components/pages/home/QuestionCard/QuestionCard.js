@@ -3,14 +3,12 @@ import './QuestionCard.css'
 import { Skeleton, Card, Avatar } from 'antd';
 import {EyeOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux'
-
+import { withRouter } from "react-router-dom";
 
 const { Meta } = Card;
 
-class QuestionCard extends React.Component {
 
-    render() {
-        const { loading, users } = this.props;
+function QuestionCard ({loading, users, questionInfo, history, authedUser}) {
 
         return (
             <>
@@ -19,20 +17,35 @@ class QuestionCard extends React.Component {
                     actions={[
                         <EyeOutlined key='view_question'/>
                     ]}
+                    hoverable = 'true'
+                    onClick={() => {
+                        if(users[authedUser]['answeredQuestions'].includes(questionInfo.id)){
+                            history.push({
+                                pathname: `/answeredquestion/:${questionInfo.id}`,
+                                questionID:  questionInfo.id 
+                            })
+                        }else{
+                            history.push({
+                                pathname: `/unansweredquestion/:${questionInfo.id}`,
+                                questionID:  questionInfo.id 
+                            })
+                        }
+                        
+
+                    }}                
                 >
                     <Skeleton loading={loading} avatar active>
                         <Meta
                             avatar={
-                                <Avatar src={users[this.props.questionInfo.createdBy]['avatarURL']} />
+                                <Avatar src={users[questionInfo.createdBy]['avatarURL']} />
                             }
-                            title={`${users[this.props.questionInfo.createdBy]['name']} Asked:`} 
-                            description={this.props.questionInfo.text.substring(0,40).concat(' ...')}
+                            title={`${users[questionInfo.createdBy]['name']} Asked:`} 
+                            description={questionInfo.text.substring(0,40).concat(' ...')}
                         />
                     </Skeleton>
                 </Card>
             </>
         );
-    }
 }
 
 function mapStateToProps({ authedUser, users, questions }) {
@@ -44,4 +57,4 @@ function mapStateToProps({ authedUser, users, questions }) {
     }
 }
 
-export default connect(mapStateToProps)(QuestionCard)
+export default withRouter(connect(mapStateToProps)(QuestionCard))

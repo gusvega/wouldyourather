@@ -50,7 +50,7 @@ let users = {
     "hbsc73kzqi75rg7v1e0i6a": {
       id: "hbsc73kzqi75rg7v1e0i6a",
       text: "Puppies 101: buy a hamper with a lid on it.",
-      createdBy: "sarah_edo",
+      createdBy: "tylermcginnis",
       timestamp: 1516043995650,
       likes: ['tylermcginnis'],
       replies: ['leqp4lzfox7cqvsgdj0e7', 'sfljgka8pfddbcer8nuxv'],
