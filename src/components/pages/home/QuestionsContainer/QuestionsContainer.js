@@ -26,19 +26,17 @@ class QuestionsContainer extends React.Component{
                     <TabPane tab="Answered Questions" key="1" onTabClick={() => console.log('TAB SELECTED')}>
                         {users[authedUser]['answeredQuestions'].map((questionID) => (
                                 <div key={questionID}>
-                                    <p>{questionID}</p>
-                                    {questions[questionID]['text']}
+                                    <QuestionCard questionInfo={questions[questionID]}/>
+
                                 </div>
                             ))}
-                        <QuestionCard/>
                     </TabPane>
                     <TabPane tab="Unanswered Questions" key="2">
                     {
                         answeredQuestions.map((questionID) => (
                             <div key={questionID}>
-                                    <p>{questionID}</p>
-                                    {questions[questionID]['text']}
-                                </div>
+                                <QuestionCard questionInfo={questions[questionID]}/>
+                            </div>
                             
                         ))
                     }

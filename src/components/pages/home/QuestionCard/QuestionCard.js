@@ -10,7 +10,7 @@ const { Meta } = Card;
 class QuestionCard extends React.Component {
 
     render() {
-        const { loading } = this.props;
+        const { loading, users } = this.props;
 
         return (
             <>
@@ -23,10 +23,10 @@ class QuestionCard extends React.Component {
                     <Skeleton loading={loading} avatar active>
                         <Meta
                             avatar={
-                                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                                <Avatar src={users[this.props.questionInfo.createdBy]['avatarURL']} />
                             }
-                            title="Card title"
-                            description="This is the description"
+                            title={`${users[this.props.questionInfo.createdBy]['name']} Asked:`} 
+                            description={this.props.questionInfo.text.substring(0,40).concat(' ...')}
                         />
                     </Skeleton>
                 </Card>
