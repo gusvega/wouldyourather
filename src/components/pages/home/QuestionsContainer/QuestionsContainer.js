@@ -17,7 +17,8 @@ class QuestionsContainer extends React.Component{
     
     render(){
         const {users, authedUser, questions} = this.props
-        console.log(authedUser)
+        console.log(questions)
+        const answeredQuestions = Object.keys(questions).filter(key => !users[authedUser]['answeredQuestions'].includes(key))
 
         return(
             <div className='QuestionsContainer'>
@@ -33,8 +34,12 @@ class QuestionsContainer extends React.Component{
                     </TabPane>
                     <TabPane tab="Unanswered Questions" key="2">
                     {
-                        Object.values(questions).filter((question) => question['id'] === "5c9qojr2d1738zlx09afby").map((question) => (
-                            <p>{question.text}</p>
+                        answeredQuestions.map((questionID) => (
+                            <div key={questionID}>
+                                    <p>{questionID}</p>
+                                    {questions[questionID]['text']}
+                                </div>
+                            
                         ))
                     }
                     </TabPane>
