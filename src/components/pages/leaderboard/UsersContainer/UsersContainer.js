@@ -5,17 +5,29 @@ import { connect } from 'react-redux'
 
 import './UsersContainer.css'
 
-function UsersContainer ({authedUser, users}){
-        return (
-            <div className='UsersContainer'>
-                <User/>
-                {
-                    Object.values(users).map(user => user['answeredQuestions']).sort().map(question => (
-                        <p>{question.length}</p>
-                    ))
-                }
-            </div>
-        )
+function UsersContainer({ authedUser, users }) {
+
+    const answeredQuestionsTotal = Object.values(users).map(user => user['answeredQuestions']).sort()
+    console.log(answeredQuestionsTotal)
+
+    const questionsCreated = Object.values(users).map(user => user['questionsCreated']).sort()
+    console.log(questionsCreated)
+
+
+
+    return (
+        <div className='UsersContainer'>
+            <User />
+            {
+                Object.values(users).map(user => user['answeredQuestions']).sort().map(question => (
+
+                    <p>{question.length}</p>
+
+                ))
+            }
+
+        </div>
+    )
 }
 
 function mapStateToProps({ authedUser, users }) {
