@@ -3,22 +3,20 @@ import QuestionCard from '../QuestionCard/QuestionCard'
 import './QuestionsContainer.css'
 import { Tabs } from 'antd';
 import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom";
+
 
 
 const { TabPane } = Tabs;
 
-class QuestionsContainer extends React.Component{
 
+function QuestionsContainer ({users, authedUser, questions}){
     
-
-    callback(key) {
-        console.log(key);
-      }
-    
-    render(){
-        const {users, authedUser, questions} = this.props
-        console.log(questions)
         const answeredQuestions = Object.keys(questions).filter(key => !users[authedUser]['answeredQuestions'].includes(key))
+
+        if(!users[authedUser]['answeredQuestions']){
+            this.props.history.push('/')
+        }
 
         return(
             <div className='QuestionsContainer'>
@@ -44,7 +42,6 @@ class QuestionsContainer extends React.Component{
                 </Tabs>                
             </div>
         )
-    }
 }
 
 function mapStateToProps({ authedUser, users, questions }) {
@@ -52,8 +49,8 @@ function mapStateToProps({ authedUser, users, questions }) {
         loading: authedUser === null,
         authedUser: authedUser,
         users: users, 
-        questions: questions
+        questions: questions,
     }
 }
 
-export default connect(mapStateToProps)(QuestionsContainer)
+export default withRouter(connect(mapStateToProps)(QuestionsContainer))

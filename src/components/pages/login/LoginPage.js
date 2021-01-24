@@ -1,14 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { store } from '../../../store'
-import {setAuthedUser} from '../../../actions/authedUser'
+import { setAuthedUser } from '../../../actions/authedUser'
 import './Login.css'
 
-import {Card } from 'antd';
-
-
 class LoginPage extends React.Component {
-    
+
     user_id = ''
 
 
@@ -24,19 +21,14 @@ class LoginPage extends React.Component {
             <div className='LoginPage'>
                 Login Page
                 <div>
-                <Card
-                style={{ width: 450, marginTop: 16 }}
-                hoverable='true'
-            >
-                <form>
+                    <form>
                         <label>
-                            Select User: 
+                            Select User:
                         </label>
                         <div>
                             <select defaultValue='none' onChange={(event) => {
                                 this.user_id = event.target.value
                                 this.handleSelectChange(this.user_id)
-
                             }}>
                                 <option key='none' value='none' disabled>None</option>
                                 {Object.keys(users).map((user) => (
@@ -45,10 +37,6 @@ class LoginPage extends React.Component {
                             </select>
                         </div>
                     </form>
-
-            </Card>
-
-                    
                 </div>
             </div>
         )
@@ -56,7 +44,6 @@ class LoginPage extends React.Component {
 }
 
 function mapStateToProps({ authedUser, users, loading }) {
-    // console.log(authedUser, users)
     return {
         loading: authedUser === null,
         authedUser: authedUser,

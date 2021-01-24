@@ -1,9 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { store } from '../../store'
 import {setAuthedUser} from '../../actions/authedUser'
 import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux'
+
 
 
 import './Nav.css'
@@ -14,13 +15,7 @@ function onClickHandler(){
 }
 
 function Nav ({authedUser, users, history}) {
-    console.log('AuthedUser', authedUser)
-    // console.log('Name', users[authedUser]['name'])
 
-    if(!authedUser){
-        history.push('/')
-    }
-    
     if(!users[authedUser]['name']){
         history.push('/')
     }
