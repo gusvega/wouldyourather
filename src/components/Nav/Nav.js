@@ -5,8 +5,6 @@ import {setAuthedUser} from '../../actions/authedUser'
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux'
 
-
-
 import './Nav.css'
 
 
@@ -16,7 +14,7 @@ function onClickHandler(){
 
 function Nav ({authedUser, users, history}) {
 
-    if(!users[authedUser]['name']){
+    if(users[authedUser]['name'] === undefined){
         history.push('/')
     }
 

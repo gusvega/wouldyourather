@@ -7,22 +7,14 @@ import './UsersContainer.css'
 
 function UsersContainer({ authedUser, users }) {
 
-    const answeredQuestionsTotal = Object.values(users).map(user => user['answeredQuestions']).sort()
-    console.log(answeredQuestionsTotal)
-
-    const questionsCreated = Object.values(users).map(user => user['questionsCreated']).sort()
-    console.log(questionsCreated)
-
-
-
     return (
         <div className='UsersContainer'>
-            <User />
             {
-                Object.values(users).map(user => user['answeredQuestions']).sort().map(question => (
+                Object.values(users).map(user => (
 
-                    <p>{question.length}</p>
-
+                    <div key={user.id}>
+                        <User userID={user.id}/>
+                    </div>   
                 ))
             }
 

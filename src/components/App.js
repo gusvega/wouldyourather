@@ -17,6 +17,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.dispatch(handleInitialData())
+    
   }
 
   render(){
@@ -51,11 +52,12 @@ class App extends Component {
   
 }
 
-function mapStateToProps ({ authedUser, users }) {
+function mapStateToProps ({ authedUser, users, getScore }) {
   return {
     loading: authedUser === null,
     users: users,
     // questions: questions,
+    getScore
   }
 }
 

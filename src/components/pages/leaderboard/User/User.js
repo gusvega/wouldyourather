@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
 
 import './User.css'
@@ -6,7 +6,17 @@ import { Skeleton, Card, Avatar } from 'antd';
 
 const { Meta } = Card;
 
-function User({ loading, users, questions }) {
+function User({ loading, users, questions, userID }) {
+
+    useEffect(() => {
+        console.log('Score: ', userID)
+      });
+    
+    const score = (users[userID]['answeredQuestions'].length + users[userID]['questionsCreated'].length) / 2
+    console.log('SCORE: ', score)
+
+
+
     return (
         <div className='User'>
             <Card
@@ -16,15 +26,15 @@ function User({ loading, users, questions }) {
                 <Skeleton loading={loading} avatar active>
                     <Meta
                         avatar={
-                            <Avatar src='' />
+                            <Avatar src={users[userID]['avatarURL']} />
                         }
-                        title='User Name'
-                        description='Score: '
+                        title={users[userID]['name']}
+                        description={`Score: ${score}`}
                     />
                 </Skeleton>
                 <br />
-                <p>Questions Asked: </p>
-                <p>Questions Answered: </p>
+                <p>Questions Asked: {users[userID]['answeredQuestions'].length} </p>
+                <p>Questions Answered: {users[userID]['questionsCreated'].length} </p>
 
             </Card>
         </div>
