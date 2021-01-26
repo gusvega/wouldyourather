@@ -1,5 +1,3 @@
-import AnsweredQuestionPage from "../components/pages/answeredQuestion/AnsweredQuestionPage/AnsweredQuestionPage"
-
 let users = {
     sarah_edo: {
       id: "sarah_edo",
@@ -205,14 +203,6 @@ let users = {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
   }
   
-
-  // id: "xi3ca2jcfvpa0i3t4m7ag",
-  // createdBy: "tylermcginnis",
-  // text: "Would you rather have unlimited international first-class tickets or never have to pay for food at restaurants?",
-  // options: {a:'unlimited international first-class tickets', b:'never have to pay for food at restaurants'},
-  // answers: [],
-
-
   function formatQuestion ({ createdBy, text, optionA, optionB}) {
     return {
       id: generateUID(),
@@ -226,8 +216,34 @@ let users = {
     }
   }
 
-  export function _addQuestion(values){
-    console.log('saveQuestion - DATA', values)
+  export function _saveQuestion ({ text, createdBy, optionA, optionB }) {
+    return new Promise((res, rej) => {
+      const formattedQuestion = formatQuestion({
+        createdBy,
+        text,
+        options: {
+          a: optionA,
+          b: optionB
+        }
+      })
+  
+      setTimeout(() => {
+        questions = {
+          ...questions,
+          [formattedQuestion.id]: formattedQuestion,
+        }
+  
+        users = {
+          ...users,
+          [createdBy]: {
+            ...users[createdBy],
+            questionsCreated: users[createdBy].questions.concat([formattedQuestion.id])
+          }
+        }
+  
+        res(formattedQuestion)
+      }, 1000)
+    })
   }
 
   export function _addAnswer(authedUser, question, answer){
