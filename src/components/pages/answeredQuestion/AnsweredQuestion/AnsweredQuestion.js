@@ -8,6 +8,14 @@ const { Meta } = Card;
 
 function AnsweredQuestion({ questions, users, loading }) {
     const location = useLocation();
+    const numberA = questions[location.questionID]['answers'].filter(a => a === 'a').length
+    const numberB = questions[location.questionID]['answers'].filter(a => a === 'b').length
+    const totalAnswers = questions[location.questionID]['answers'].length
+    
+    const percentA = (numberA/totalAnswers) * 100
+    const percentB = (numberB/totalAnswers) * 100
+
+    // const porcentageA = questions[location.questionID].['answers']
 
     return (
         <div className='AnsweredQuestion'>
@@ -27,8 +35,12 @@ function AnsweredQuestion({ questions, users, loading }) {
                 </Skeleton>
                 <br />
                 <p>Results: </p>
-                <Progress percent={30} />
-                <Progress percent={50} status="active" />
+                <Progress percent={percentA} />
+                <p>{questions[location.questionID].options['a']}</p>
+
+                <Progress percent={percentB} status="active" />
+                <p>{questions[location.questionID].options['b']}</p>
+
             </Card>
         </div>
     )

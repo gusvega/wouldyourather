@@ -35,9 +35,9 @@ function UnansweredQuestion({ questions, users, loading }) {
                 <br />
                 <p>Options: </p>
                 <Radio.Group onChange={onChange} value={value}>
-                    <Radio value={1}>{questions[location.questionID].options[0]}</Radio>
+                    <Radio value={1}>{questions[location.questionID].options['a']}</Radio>
                     <br/>
-                    <Radio value={2}>{questions[location.questionID].options[1]}</Radio>
+                    <Radio value={2}>{questions[location.questionID].options['b']}</Radio>
                 </Radio.Group>
                 <br/>
                 <br/>
