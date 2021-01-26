@@ -7,24 +7,13 @@ export default function questions(state = {}, action) {
                 ...state,
                 ...action.questions
             }
-        // case ADD_QUESTION:
-        //     const { question } = action
+        case ADD_QUESTION:
+            
 
-        //     let replyingTo = {}
-        //     if (question.replyingTo !== null) {
-        //         replyingTo = {
-        //             [question.replyingTo]: {
-        //                 ...state[question.replyingTo],
-        //                 replies: state[question.replyingTo].replies.concat([question.id])
-        //             }
-        //         }
-        //     }
-
-        //     return {
-        //         ...state,
-        //         [action.question.id]: action.question,
-        //         ...replyingTo,
-            // }
+            return {
+                ...state,
+                [action.question.id]: action.question,
+            }
         default:
             return state
     }

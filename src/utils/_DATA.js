@@ -1,3 +1,5 @@
+import AnsweredQuestionPage from "../components/pages/answeredQuestion/AnsweredQuestionPage/AnsweredQuestionPage"
+
 let users = {
     sarah_edo: {
       id: "sarah_edo",
@@ -175,10 +177,8 @@ let users = {
       id: "xi3ca2jcfvpa0i3t4m7ag",
       createdBy: "tylermcginnis",
       text: "Would you rather have unlimited international first-class tickets or never have to pay for food at restaurants?",
-      timestamp: 1510043995650,
-      likes: [],
-      replyingTo: "6h5ims9iks66d4m7kqizmv",
-      replies: [],
+      options: {a:'unlimited international first-class tickets', b:'never have to pay for food at restaurants'},
+      answers: [],
     },
     "r0xu2v1qrxa6ygtvf2rkjw": {
       id: "r0xu2v1qrxa6ygtvf2rkjw",
@@ -200,3 +200,59 @@ let users = {
       setTimeout(() => res({...questions}), 1000)
     })
   }
+
+  function generateUID () {
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+  }
+  
+
+  // id: "xi3ca2jcfvpa0i3t4m7ag",
+  // createdBy: "tylermcginnis",
+  // text: "Would you rather have unlimited international first-class tickets or never have to pay for food at restaurants?",
+  // options: {a:'unlimited international first-class tickets', b:'never have to pay for food at restaurants'},
+  // answers: [],
+
+
+  function formatTweet ({ createdBy, text, optionA, optionB}) {
+    return {
+      id: generateUID(),
+      createdBy,
+      text,
+      options: {
+        a: optionA,
+        b: optionB
+      },
+      answers: [],
+    }
+  }
+  
+  export function _saveQuestion ({ text, createdBy, optionA, optionB }) {
+    return new Promise((res, rej) => {
+      const formattedQuestion = formatTweet({
+        text,
+        createdBy,
+        options: {
+          a: optionA,
+          b: optionB
+        },
+      })
+  
+      setTimeout(() => {
+        questions = {
+          ...questions,
+          [formattedQuestion.id]: formattedQuestion,
+        }
+  
+        users = {
+          ...users,
+          [createdBy]: {
+            ...users[createdBy],
+            questions: users[createdBy].questions.concat([formattedQuestion.id])
+          }
+        }
+  
+        res(formattedQuestion)
+      }, 1000)
+    })
+  }
+  

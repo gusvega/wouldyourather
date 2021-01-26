@@ -2,6 +2,8 @@ import React from 'react'
 import './NewQuestionCard.css'
 import { Form, Input, Button } from 'antd';
 import { Skeleton, Card } from 'antd';
+import { handleAddQuestion } from '../../../../actions/questions'
+
 
 const { Meta } = Card;
 
