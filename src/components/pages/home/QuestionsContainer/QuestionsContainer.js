@@ -10,12 +10,12 @@ import { withRouter } from "react-router-dom";
 const { TabPane } = Tabs;
 
 
-function QuestionsContainer ({users, authedUser, questions}){
+function QuestionsContainer ({users, authedUser, questions, history}){
     
         const answeredQuestions = Object.keys(questions).filter(key => !users[authedUser]['answeredQuestions'].includes(key))
 
         if(!users[authedUser]['answeredQuestions']){
-            this.props.history.push('/')
+            history.push('/')
         }
 
         return(

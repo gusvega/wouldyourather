@@ -45,7 +45,7 @@ let users = {
           b:'speak'
         }
       ,
-      answers: ['a', 'a', 'a', 'b'],
+      answers: [],
 
     },
     "f4xzgapq7mu783k9t02ghx": {
@@ -213,7 +213,7 @@ let users = {
   // answers: [],
 
 
-  function formatTweet ({ createdBy, text, optionA, optionB}) {
+  function formatQuestion ({ createdBy, text, optionA, optionB}) {
     return {
       id: generateUID(),
       createdBy,
@@ -225,34 +225,30 @@ let users = {
       answers: [],
     }
   }
-  
-  export function _saveQuestion ({ text, createdBy, optionA, optionB }) {
-    return new Promise((res, rej) => {
-      const formattedQuestion = formatTweet({
-        text,
-        createdBy,
-        options: {
-          a: optionA,
-          b: optionB
-        },
-      })
-  
-      setTimeout(() => {
-        questions = {
-          ...questions,
-          [formattedQuestion.id]: formattedQuestion,
-        }
-  
-        users = {
-          ...users,
-          [createdBy]: {
-            ...users[createdBy],
-            questions: users[createdBy].questions.concat([formattedQuestion.id])
-          }
-        }
-  
-        res(formattedQuestion)
-      }, 1000)
-    })
+
+  export function _addQuestion(values){
+    console.log('saveQuestion - DATA', values)
   }
-  
+
+  export function _addAnswer(authedUser, question, answer){
+    console.log('SAVE QUESTION - DATA', authedUser, question, answer)
+
+    questions = {
+      ...questions,
+      [question.id]: {
+        answers: questions[question.id].answers.push(answer)
+      }
+    }
+
+    users = {
+      ...users,
+      authedUser: {
+        answeredQuestions: users[authedUser]['answeredQuestions'].push(question.id)
+      }
+    }
+
+    questions = {
+      questions
+    }
+
+  }

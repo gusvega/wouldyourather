@@ -30,8 +30,6 @@ function QuestionCard ({loading, users, questionInfo, history, authedUser}) {
                                 questionID:  questionInfo.id 
                             })
                         }
-                        
-
                     }}                
                 >
                     <Skeleton loading={loading} avatar active>

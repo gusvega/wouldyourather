@@ -1,20 +1,29 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { store } from '../../../../store'
+import {handleSubmitAnswer} from '../../../../actions/questions'
 import { useLocation } from "react-router-dom";
 import { Skeleton, Card, Avatar, Radio, Button } from 'antd';
+import { withRouter } from "react-router-dom";
+
 import './UnansweredQuestion.css'
 
 const { Meta } = Card;
 
-function UnansweredQuestion({ questions, users, loading }) {
+function UnansweredQuestion({ questions, users, loading, history }) {
     const location = useLocation();
 
     const [value, setValue] = React.useState(1);
 
     const onChange = e => {
-      console.log('radio checked', e.target.value);
-      setValue(e.target.value);
+        console.log('radio checked', e.target.value);
+        setValue(e.target.value);
     };
+
+    const onSubmit = () => {
+        store.dispatch(handleSubmitAnswer(questions[location.questionID], value))
+        history.push('/home')
+    }
 
     return (
         <div className='AnsweredQuestion'>
@@ -35,23 +44,25 @@ function UnansweredQuestion({ questions, users, loading }) {
                 <br />
                 <p>Options: </p>
                 <Radio.Group onChange={onChange} value={value}>
-                    <Radio value={1}>{questions[location.questionID].options['a']}</Radio>
-                    <br/>
-                    <Radio value={2}>{questions[location.questionID].options['b']}</Radio>
+                    <Radio value={'a'}>{questions[location.questionID].options['a']}</Radio>
+                    <br />
+                    <Radio value={'b'}>{questions[location.questionID].options['b']}</Radio>
                 </Radio.Group>
-                <br/>
-                <br/>
-                <Button type="primary">Primary Button</Button>            </Card>
+                <br />
+                <br />
+                <Button type="primary" onClick={onSubmit}>Primary Button</Button>
+            </Card>
         </div>
     )
 }
 
-function mapStateToProps({ authedUser, users, questions }) {
+function mapStateToProps({ authedUser, users, questions, dispatch }) {
     return {
         loading: authedUser === null,
         users: users,
         questions: questions,
+        dispatch
     }
 }
 
-export default connect(mapStateToProps)(UnansweredQuestion)
+export default withRouter(connect(mapStateToProps)(UnansweredQuestion))

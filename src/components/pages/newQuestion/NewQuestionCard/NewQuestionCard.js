@@ -2,12 +2,13 @@ import React from 'react'
 import './NewQuestionCard.css'
 import { Form, Input, Button } from 'antd';
 import { Skeleton, Card } from 'antd';
-import { handleAddQuestion } from '../../../../actions/questions'
-
+import {handleAddQuestion} from '../../../../actions/questions'
 
 const { Meta } = Card;
 
+
 function NewQuestionCard({ loading }) {
+
 
     const layout = {
         labelCol: { span: 8 },
@@ -19,6 +20,7 @@ function NewQuestionCard({ loading }) {
 
     const onFinish = (values) => {
         console.log('Success:', values);
+        handleAddQuestion(values)
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -45,6 +47,7 @@ function NewQuestionCard({ loading }) {
                     name="basic"
                     initialValues={{ remember: true }}
                     onFinish={onFinish}
+
                     onFinishFailed={onFinishFailed}>
 
                     <Form.Item
@@ -58,7 +61,7 @@ function NewQuestionCard({ loading }) {
 
                     <Form.Item
                         label="Option 1: "
-                        name="username"
+                        name="answerA"
                         rules={[{ required: true, message: 'Please input an option!' }]}>
 
                         <Input />
@@ -67,7 +70,7 @@ function NewQuestionCard({ loading }) {
 
                     <Form.Item
                         label="Option 2: "
-                        name="password"
+                        name="answerB"
                         rules={[{ required: true, message: 'Please input an option!' }]}>
 
                         <Input />
