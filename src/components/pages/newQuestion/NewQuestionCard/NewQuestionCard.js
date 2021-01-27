@@ -3,12 +3,16 @@ import './NewQuestionCard.css'
 import { Form, Input, Button } from 'antd';
 import { Skeleton, Card } from 'antd';
 import {handleAddQuestion} from '../../../../actions/questions'
+import { useHistory } from "react-router-dom";
+
+
 
 const { Meta } = Card;
 
 
 function NewQuestionCard({ loading }) {
 
+    const history = useHistory()
 
     const layout = {
         labelCol: { span: 8 },
@@ -21,6 +25,8 @@ function NewQuestionCard({ loading }) {
     const onFinish = (values) => {
         console.log('Success:', values);
         handleAddQuestion(values)
+        history.push('/home')
+
     };
 
     const onFinishFailed = (errorInfo) => {

@@ -14,8 +14,8 @@ function onClickHandler(){
 
 function Nav ({authedUser, users, history}) {
 
-    if(users[authedUser]['name'] === undefined){
-        history.push('/')
+    if(users[authedUser] && users[authedUser] === undefined){
+        history.push('/home')
     }
 
     return (

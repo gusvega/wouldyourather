@@ -24,7 +24,7 @@ function UnansweredQuestion({ questions, users, loading, authedUser }) {
 
     const onSubmit = () => {
         store.dispatch(handleSubmitAnswer(questions[location.questionID], value))
-        history.push('/')
+        history.push('/home')
     }
 
     return (
@@ -52,7 +52,7 @@ function UnansweredQuestion({ questions, users, loading, authedUser }) {
                 </Radio.Group>
                 <br />
                 <br />
-                <Button type="primary" onClick={onSubmit}>Primary Button</Button>
+                <Button type="primary" onClick={onSubmit}>Submit</Button>
             </Card>
         </div>
     )
