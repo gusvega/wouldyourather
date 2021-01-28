@@ -18,6 +18,9 @@ function Nav ({authedUser, users, history}) {
         history.push('/home')
     }
 
+    let user = authedUser && users[authedUser]; // safety check for accessing the user
+    let userName = user && user.name // safety check for fetching the name
+
     return (
         <nav className='Nav'>
             <div className="tabset">
@@ -25,7 +28,7 @@ function Nav ({authedUser, users, history}) {
                 <NavLink className='link' to='/newquestion' activeClassName='active'>New Question</NavLink>
 
                 <NavLink className='link' to='/leaderboard' activeClassName='active'>Leader Board</NavLink>
-                <div className='userInfo'>Hello, <strong>{users[authedUser]['name']}</strong></div>
+                <div className='userInfo'>Hello, <strong>{userName}</strong></div>
                 <br></br>
                 <NavLink className='signOutButton' to="/login" onClick={onClickHandler}>Sign out</NavLink>  
 

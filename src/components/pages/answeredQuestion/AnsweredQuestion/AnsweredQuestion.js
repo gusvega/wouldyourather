@@ -8,14 +8,14 @@ const { Meta } = Card;
 
 function AnsweredQuestion({ questions, users, loading }) {
     const location = useLocation();
-    const numberA = questions[location.questionID]['answers'].filter(a => a === 'a').length
-    const numberB = questions[location.questionID]['answers'].filter(a => a === 'b').length
-    const totalAnswers = questions[location.questionID]['answers'].length
+    const numberA = questions[location.questionInfo.id]['answers'].filter(a => a === 'a').length
+    const numberB = questions[location.questionInfo.id]['answers'].filter(a => a === 'b').length
+    const totalAnswers = questions[location.questionInfo.id]['answers'].length
     
     const percentA = (numberA/totalAnswers) * 100
     const percentB = (numberB/totalAnswers) * 100
 
-    // const porcentageA = questions[location.questionID].['answers']
+    // const porcentageA = questions[location.questionInfo].['answers']
 
     return (
         <div className='AnsweredQuestion'>
@@ -27,19 +27,19 @@ function AnsweredQuestion({ questions, users, loading }) {
                 <Skeleton loading={loading} avatar active>
                     <Meta
                         avatar={
-                            <Avatar src={users[questions[location.questionID].createdBy]['avatarURL']} />
+                            <Avatar src={users[questions[location.questionInfo.id].createdBy]['avatarURL']} />
                         }
-                        title={`${users[questions[location.questionID].createdBy]['name']} Asked:`}
-                        description={questions[location.questionID].text}
+                        title={`${users[questions[location.questionInfo.id].createdBy]['name']} Asked:`}
+                        description={questions[location.questionInfo.id].text}
                     />
                 </Skeleton>
                 <br />
                 <p>Results: </p>
                 <Progress percent={percentA} />
-                <p>{questions[location.questionID].options['a']}</p>
+                <p>{questions[location.questionInfo.id].options['a']}</p>
 
                 <Progress percent={percentB} status="active" />
-                <p>{questions[location.questionID].options['b']}</p>
+                <p>{questions[location.questionInfo.id].options['b']}</p>
 
             </Card>
         </div>

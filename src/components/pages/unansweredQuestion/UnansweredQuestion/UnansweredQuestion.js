@@ -13,6 +13,7 @@ function UnansweredQuestion({ questions, users, loading, authedUser }) {
     const location = useLocation();
     const history = useHistory()
 
+    console.log('QUESTION ID: ', location.questionInfo.id)
 
     const [value, setValue] = React.useState(1);
 
@@ -23,7 +24,8 @@ function UnansweredQuestion({ questions, users, loading, authedUser }) {
     };
 
     const onSubmit = () => {
-        store.dispatch(handleSubmitAnswer(questions[location.questionID], value))
+        // console.log('question', questions[location.questionInfo.id])
+        store.dispatch(handleSubmitAnswer(questions[location.questionInfo.id], value))
         history.push('/home')
     }
 
@@ -37,18 +39,19 @@ function UnansweredQuestion({ questions, users, loading, authedUser }) {
                 <Skeleton loading={loading} avatar active>
                     <Meta
                         avatar={
-                            <Avatar src={users[questions[location.questionID].createdBy]['avatarURL']} />
+                            <Avatar src={users[questions[location.questionInfo.id].createdBy]['avatarURL']} />
+
                         }
-                        title={`${users[questions[location.questionID].createdBy]['name']} Asked:`}
-                        description={questions[location.questionID].text}
+                        title={`${users[questions[location.questionInfo.id].createdBy]['name']} Asked:`}
+                        description={questions[location.questionInfo.id].text}
                     />
                 </Skeleton>
                 <br />
                 <p>Options: </p>
                 <Radio.Group onChange={onChange} value={value}>
-                    <Radio value={'a'}>{questions[location.questionID].options['a']}</Radio>
+                    <Radio value={'a'}>{questions[location.questionInfo.id].options['a']}</Radio>
                     <br />
-                    <Radio value={'b'}>{questions[location.questionID].options['b']}</Radio>
+                    <Radio value={'b'}>{questions[location.questionInfo.id].options['b']}</Radio>
                 </Radio.Group>
                 <br />
                 <br />

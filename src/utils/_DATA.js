@@ -27,6 +27,7 @@ let users = {
       id: "8xf0y6ziyjabvozdd253nd",
       text: "Would you rather the aliens that make first contact be robotic or organic?",
       createdBy: "sarah_edo",
+      timestamp: 1514044994050,
       options: {
         a: 'robotic',
         b: 'organic'
@@ -37,12 +38,8 @@ let users = {
       id: "5c9qojr2d1738zlx09afby",
       text: "Would you rather lose the ability to read or lose the ability to speak?",
       createdBy: "tylermcginnis",
-      options: 
-        {
-          a:'read',
-          b:'speak'
-        }
-      ,
+      timestamp: 1514044994150,
+      options: {a:'read', b:'speak'},
       answers: [],
 
     },
@@ -50,6 +47,7 @@ let users = {
       id: "f4xzgapq7mu783k9t02ghx",
       text: "Would you rather have a golden voice or a silver tongue?",
       createdBy: "tylermcginnis",
+      timestamp: 1514044994250,
       options: {a:'golden voice', b:'silver tongue'},
       answers: [],
     },
@@ -57,6 +55,7 @@ let users = {
       id: "hbsc73kzqi75rg7v1e0i6a",
       text: "Would you rather be covered in fur or covered in scales?",
       createdBy: "tylermcginnis",
+      timestamp: 1514044994350,
       options: {a:'fur', b:'scales'},
       answers: [],
 
@@ -65,6 +64,7 @@ let users = {
       id: "5w6k1n34dkp1x29cuzn2zn",
       text: "Would you rather be in jail for a year or lose a year off your life?",
       createdBy: "dan_abramov",
+      timestamp: 1514044994450,
       options: {a:'be in jail for a year',b: 'ose a year off your life'},
       answers: [],
 
@@ -73,6 +73,7 @@ let users = {
       id: "czpa59mg577x1oo45cup0d",
       text: "Would you rather always be 10 minutes late or always be 20 minutes early?",
       createdBy: "dan_abramov",
+      timestamp: 1514044994550,
       options: {a:'10 minutes late', b:'20 minutes early'},
       answers: [],
 
@@ -81,6 +82,7 @@ let users = {
       id: "2mb6re13q842wu8n106bhk",
       text: "Would you rather have one real get out of jail free card or a key that opens any door?",
       createdBy: "sarah_edo",
+      timestamp: 1514044994650,
       options: {a:'one real get out of jail free card', b:'key that opens any door'},
       answers: [],
 
@@ -89,6 +91,7 @@ let users = {
       id: "nnvkjqoevs8t02lzcc0ky",
       text: "Would you rather know the history of every object you touched or be able to talk to animals?",
       createdBy: "tylermcginnis",
+      timestamp: 1514044994750,
       options: {a:'know the history of every object you touched', b:'be able to talk to animals'},
       answers: [],
 
@@ -97,6 +100,7 @@ let users = {
       id: "omdbjl68fxact38hk7ypy6",
       text: "Would you rather be married to a 10 with a bad personality or a 6 with an amazing personality?",
       createdBy: "dan_abramov",
+      timestamp: 1514044994850,
       options: {a:'a 10 with a bad personality',b: 'a 6 with an amazing personality'},
       answers: [],
 
@@ -105,6 +109,7 @@ let users = {
       id: "4pt0px8l0l9g6y69ylivti",
       text: "Would you rather be able to talk to land animals or animals that live under the water?",
       createdBy: "tylermcginnis",
+      timestamp: 1514044994950,
       options: {a:'land animals', b:'animals that live under the water'},
       answers: [],
 
@@ -113,6 +118,7 @@ let users = {
       id: "6h5ims9iks66d4m7kqizmv",
       text: "Would you rather have all traffic lights you approach be green or never have to stand in line again?",
       createdBy: "sarah_edo",
+      timestamp: 1514044994600,
       options: {a:'all traffic lights you approach be green', b:'never have to stand in line again'},
       answers: [],
 
@@ -120,6 +126,7 @@ let users = {
     "fap8sdxppna8oabnxljzcv": {
       id: "fap8sdxppna8oabnxljzcv",
       createdBy: "tylermcginnis",
+      timestamp: 1514044994610,
       text: "Would you rather spend the rest of your life with a sailboat as your home or an RV as your home?",
       options: {a:'sailboat', b:'RV'},
       answers: [],
@@ -128,6 +135,7 @@ let users = {
     "3km0v4hf1ps92ajf4z2ytg": {
       id: "3km0v4hf1ps92ajf4z2ytg",
       createdBy: "dan_abramov",
+      timestamp: 1514044994620,
       text: "Would you rather give up all drinks except for water or give up eating anything that was cooked in an oven?",
       options: {a:'all drinks except for water', b:'eating anything that was cooked in an oven'},
       answers: [],
@@ -136,6 +144,7 @@ let users = {
     "njv20mq7jsxa6bgsqc97": {
       id: "njv20mq7jsxa6bgsqc97",
       createdBy: "dan_abramov",
+      timestamp: 1514044994630,
       text: "Would you rather be able to see 10 minutes into your own future or 10 minutes into the future of anyone but yourself?",
       options: {a:'own future', b:'anyone'},
       answers: [],
@@ -144,6 +153,7 @@ let users = {
     "leqp4lzfox7cqvsgdj0e7": {
       id: "leqp4lzfox7cqvsgdj0e7",
       createdBy: "tylermcginnis",
+      timestamp: 1514044994640,
       text: "Would you rather have an easy job working for someone else or work for yourself but work incredibly hard?",
       options: {a:'an easy job working for someone else', b:'work for yourself but work incredibly hard'},
       answers: [],
@@ -152,6 +162,7 @@ let users = {
     "sfljgka8pfddbcer8nuxv": {
       id: "sfljgka8pfddbcer8nuxv",
       createdBy: "dan_abramov",
+      timestamp: 1514044994650,
       text: "Would you rather be the first person to explore a planet or be the inventor of a drug that cures a deadly disease?",
       options: {a:'first person to explore a planet', b:'the inventor of a drug that cures a deadly disease'},
       answers: [],
@@ -160,6 +171,7 @@ let users = {
     "3sklxkf9yyfowrf0o1ftbb": {
       id: "3sklxkf9yyfowrf0o1ftbb",
       createdBy: "sarah_edo",
+      timestamp: 1514044994660,
       text: "Would you rather go back to age 5 with everything you know now or know now everything your future self will learn?",
       options: {a:'go back to age 5 with everything you know', b:'know now everything your future self will learn'},
       answers: [],
@@ -167,6 +179,7 @@ let users = {
     "26p5pskqi88i58qmza2gid": {
       id: "26p5pskqi88i58qmza2gid",
       createdBy: "tylermcginnis",
+      timestamp: 1514044994670,
       text: "Would you rather be able to control animals (but not humans) with your mind or control electronics with your mind?",
       options: {a:'be able to control animals (but not humans) with your mind', b:'control electronics with your mind'},
       answers: [],
@@ -174,6 +187,7 @@ let users = {
     "xi3ca2jcfvpa0i3t4m7ag": {
       id: "xi3ca2jcfvpa0i3t4m7ag",
       createdBy: "tylermcginnis",
+      timestamp: 1514044994680,
       text: "Would you rather have unlimited international first-class tickets or never have to pay for food at restaurants?",
       options: {a:'unlimited international first-class tickets', b:'never have to pay for food at restaurants'},
       answers: [],
@@ -181,6 +195,7 @@ let users = {
     "r0xu2v1qrxa6ygtvf2rkjw": {
       id: "r0xu2v1qrxa6ygtvf2rkjw",
       createdBy: "dan_abramov",
+      timestamp: 1514044994690,
       text: "Would you rather see what was behind every closed door or be able to guess the combination of every safe on the first try?",
       options: {a:'see what was behind every closed door', b:'be able to guess the combination of every safe on the first try'},
       answers: [],
@@ -247,12 +262,12 @@ let users = {
   }
 
   export function _addAnswer(authedUser, question, answer){
-    console.log('SAVE QUESTION - DATA', authedUser, question, answer)
+    console.log('SAVE ANSWER - DATA', authedUser, question.id, answer)
 
     questions = {
       ...questions,
       [question.id]: {
-        answers: questions[question.id].answers.push(answer)
+        answers: questions[question.id]['answers'].push(answer)
       }
     }
 

@@ -6,47 +6,57 @@ import { withRouter } from "react-router-dom";
 
 const { Meta } = Card;
 
+class QuestionCard extends React.Component {
 
-function QuestionCard({ loading, users, questionInfo, history, authedUser }) {
-
-    if (users[authedUser] && users[authedUser] === undefined) {
-        history.push('/home')
+    handleOnClick = (users, authedUser, questionInfo, history) => {
+        if (users[authedUser]['answeredQuestions'].includes(questionInfo.id)) {
+            history.push({
+                pathname: `/answeredquestion/:${questionInfo.id}`,
+                questionInfo: questionInfo
+            })
+        } else {
+            history.push({
+                pathname: `/unansweredquestion/:${questionInfo.id}`,
+                questionInfo: questionInfo
+            })
+            console.log('questionInfo', questionInfo)
+        }
     }
 
-    return (
-        <>
-            <Card
-                style={{ width: 450, marginTop: 16 }}
-                actions={[
-                    <p>Click card to view full question</p>
-                ]}
-                hoverable='true'
-                onClick={() => {
-                    if (users[authedUser]['answeredQuestions'].includes(questionInfo.id)) {
-                        history.push({
-                            pathname: `/answeredquestion/:${questionInfo.id}`,
-                            questionID: questionInfo.id
-                        })
-                    } else {
-                        history.push({
-                            pathname: `/unansweredquestion/:${questionInfo.id}`,
-                            questionID: questionInfo.id
-                        })
-                    }
-                }}
-            >
-                <Skeleton loading={loading} avatar active>
-                    <Meta
-                        avatar={
-                            <Avatar src={users[questionInfo.createdBy]['avatarURL']} />
-                        }
-                        title={`${users[questionInfo.createdBy]['name']} Asked:`}
-                        description={questionInfo.text.substring(0, 40).concat(' ...')}
-                    />
-                </Skeleton>
-            </Card>
-        </>
-    );
+    render(){
+
+        const { loading, users, questionInfo, history, authedUser } = this.props
+
+        let createdBy = questionInfo && questionInfo.createdBy; // safety check to see if this value is available
+        let questionText = questionInfo && questionInfo.text; // safety check to see if this value is available
+    
+        let user = createdBy && users[createdBy]; // safety check for accessing the user
+        let userURL = user && user.avatarURL // safety check for fetching the url
+        let userName = user && user.name // safety check for fetching the name
+
+        return (
+            <>
+                <Card
+                    style={{ width: 450, marginTop: 16 }}
+                    actions={[
+                        <p>Click card to view full question</p>
+                    ]}
+                    hoverable='true'
+                    onClick={() => this.handleOnClick(users, authedUser, questionInfo, history)}
+                >
+                    <Skeleton loading={loading} avatar active>
+                        <Meta
+                            avatar={
+                                <Avatar src={userURL} />
+                            }
+                            title={`${userName} Asked:`}
+                            description={questionText}
+                        />
+                    </Skeleton>
+                </Card>
+            </>
+        );
+    }
 }
 
 function mapStateToProps({ authedUser, users, questions }) {
