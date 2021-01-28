@@ -33,7 +33,7 @@ function QuestionsContainer({ users, authedUser, questions, history }) {
                         let timestampB = questions && questions[questionB].timestamp 
 
 
-                        return (timestampA / 2) - (timestampB / 2)
+                        return (timestampB / 2) - (timestampA / 2)
                     }).map((questionID) => (
                         <div key={questionID}>
                             <QuestionCard questionInfo={questions[questionID]} />

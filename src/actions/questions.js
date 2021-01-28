@@ -32,7 +32,7 @@ export function addQuestion(question) {
 export function handleAddQuestion (question, optionA, optionB) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
-    console.log('---- handleAddQuestion: ', saveQuestion({question, optionA, optionB, authedUser}))
+    // console.log('---- handleAddQuestion: ', saveQuestion({question, optionA, optionB, authedUser}))
 
     dispatch(showLoading())
 

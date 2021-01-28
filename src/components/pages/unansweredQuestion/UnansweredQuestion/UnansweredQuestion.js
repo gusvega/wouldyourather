@@ -13,9 +13,16 @@ function UnansweredQuestion({ questions, users, loading, authedUser }) {
     const location = useLocation();
     const history = useHistory()
 
-    console.log('QUESTION ID: ', location.questionInfo.id)
+    console.log('QUESTION ID: ', location.questionInfo)
 
     const [value, setValue] = React.useState(1);
+
+    // let createdBy = questionInfo && questionInfo.createdBy; // safety check to see if this value is available
+    // let questionText = questionInfo && questionInfo.text; // safety check to see if this value is available
+
+    // let user = createdBy && users[createdBy]; // safety check for accessing the user
+    // let userURL = user && user.avatarURL // safety check for fetching the url
+    // let userName = user && user.name // safety check for fetching the name
 
     const onChange = e => {
         console.log('radio checked', e.target.value)

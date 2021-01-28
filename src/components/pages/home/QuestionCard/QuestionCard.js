@@ -9,6 +9,7 @@ const { Meta } = Card;
 class QuestionCard extends React.Component {
 
     handleOnClick = (users, authedUser, questionInfo, history) => {
+
         if (users[authedUser]['answeredQuestions'].includes(questionInfo.id)) {
             history.push({
                 pathname: `/answeredquestion/:${questionInfo.id}`,
@@ -21,6 +22,7 @@ class QuestionCard extends React.Component {
             })
             console.log('questionInfo', questionInfo)
         }
+
     }
 
     render(){

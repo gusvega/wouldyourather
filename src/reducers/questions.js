@@ -11,9 +11,7 @@ export default function questions(state = {}, action) {
         case ADD_QUESTION:
             return {
                 ...state,
-                // ...action.question
                 [action.question.id]: action.question,
-
             }
         case SUBMIT_ANSWER:
             return {

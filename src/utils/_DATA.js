@@ -210,7 +210,7 @@ function generateUID() {
 function formatQuestion({question, optionA, optionB, authedUser}) {
   return {
     id: generateUID(),
-    authedUser,
+    createdBy: authedUser,
     text: question,
     options: {
       a: optionA,
@@ -223,7 +223,7 @@ function formatQuestion({question, optionA, optionB, authedUser}) {
 }
 
 export function _saveQuestion( {question, optionA, optionB, authedUser }) {
-  console.log('---- _saveQuestion: values:  ', question, optionA, optionB, authedUser)
+  // console.log('---- _saveQuestion: values:  ', question, optionA, optionB, authedUser)
 
   return new Promise((res, rej) => {
 
@@ -241,21 +241,7 @@ export function _saveQuestion( {question, optionA, optionB, authedUser }) {
         ...questions,
         [formattedQuestion.id]: formattedQuestion,
       }
-
-      // users = {
-      //   ...users,
-      //   [authedUser]: {
-      //     questionsCreated: users[authedUser].questionsCreated.push(formattedQuestion.id)
-      //   }
-      // }
-      // users = {
-      //   ...users,
-      //   [authedUser]: {
-      //     ...users[authedUser],
-      //     questionsCreated: users[authedUser].questionsCreated.concat([formattedTweet.id])
-      //   }
-      // }
-      console.log('formatQuestion',formattedQuestion)
+      // console.log('formatQuestion',formattedQuestion)
 
       res(formattedQuestion)
     }, 1000)
