@@ -2,6 +2,7 @@ import React from 'react'
 import './NewQuestionCard.css'
 import { Form, Input, Button } from 'antd';
 import { Skeleton, Card } from 'antd';
+import {store} from '../../../../store'
 import {handleAddQuestion} from '../../../../actions/questions'
 import { useHistory } from "react-router-dom";
 
@@ -23,8 +24,7 @@ function NewQuestionCard({ loading }) {
     };
 
     const onFinish = (values) => {
-        console.log('Success:', values);
-        handleAddQuestion(values)
+        store.dispatch(handleAddQuestion(values.question, values.optionA, values.optionB))
         history.push('/home')
 
     };
@@ -59,7 +59,7 @@ function NewQuestionCard({ loading }) {
                     <Form.Item
                         label="Question: "
                         name="question"
-                        rules={[{ required: true, message: 'Please input your a question!' }]}>
+                        rules={[{ required: true, message: 'Please input your question!' }]}>
 
                         <Input.TextArea />
 
@@ -67,7 +67,7 @@ function NewQuestionCard({ loading }) {
 
                     <Form.Item
                         label="Option 1: "
-                        name="answerA"
+                        name="optionA"
                         rules={[{ required: true, message: 'Please input an option!' }]}>
 
                         <Input />
@@ -76,7 +76,7 @@ function NewQuestionCard({ loading }) {
 
                     <Form.Item
                         label="Option 2: "
-                        name="answerB"
+                        name="optionB"
                         rules={[{ required: true, message: 'Please input an option!' }]}>
 
                         <Input />

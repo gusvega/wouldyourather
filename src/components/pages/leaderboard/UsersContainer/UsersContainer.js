@@ -11,13 +11,11 @@ function UsersContainer({ authedUser, users }) {
         <div className='UsersContainer'>
             {
                 Object.values(users).sort((userA, userB) => {
-                    {/* console.log('Sort:', userA['questionsCreated'].length) */}
-                   return ((userB['questionsCreated'].length + userB['answeredQuestions'].length)/2) - ((userA['questionsCreated'].length + userA['answeredQuestions'].length)/2)
+                    return ((userB['questionsCreated'].length + userB['answeredQuestions'].length) / 2) - ((userA['questionsCreated'].length + userA['answeredQuestions'].length) / 2)
                 }).map(user => (
-
                     <div key={user.id}>
-                        <User userID={user.id}/>
-                    </div>   
+                        <User userID={user.id} />
+                    </div>
                 ))
             }
 

@@ -21,10 +21,23 @@ export function submitAnswer(question) {
   }
 }
 
-export function addQuestion(values) {
+export function addQuestion(question) {
+  console.log('QUESTION: ', question)
   return {
     type: ADD_QUESTION,
-    values,
+    question,
+  }
+}
+
+export function handleAddQuestion (question, optionA, optionB) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState()
+    console.log('---- handleAddQuestion: ', saveQuestion({question, optionA, optionB, authedUser}))
+
+    dispatch(showLoading())
+
+    return saveQuestion({question, optionA, optionB, authedUser}).then((result) => dispatch(addQuestion(result)))
+      .then(() => dispatch(hideLoading()))
   }
 }
 
@@ -36,21 +49,3 @@ export function handleSubmitAnswer(question, answer) {
   }
 }
 
-export function handleAddQuestion (text, optionA, optionB) {
-  return (dispatch, getState) => {
-    const { authedUser } = getState()
-
-    dispatch(showLoading())
-
-    return saveQuestion({
-      text,
-      author: authedUser,
-      options: {
-        a: optionA,
-        b: optionB
-      }
-    })
-      .then((question) => dispatch(addQuestion(question)))
-      .then(() => dispatch(hideLoading()))
-  }
-}

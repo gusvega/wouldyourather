@@ -21,5 +21,6 @@ import {
   }
 
   export function saveQuestion (info) {
+    console.log('--- saveQuestion : values', _saveQuestion(info))
     return _saveQuestion(info)
   }
